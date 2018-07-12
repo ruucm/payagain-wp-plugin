@@ -135,7 +135,7 @@ add_shortcode('pay-again-billing-inicis-method-info', 'show_pay_again_inicis_pay
 function my_custom_endpoints() {
 	add_rewrite_endpoint( 'billing-method-info', EP_ROOT | EP_PAGES );
 }
-add_action( 'init', 'my_custom_endpoints' );
+add_action( 'my_custom_endpoints', 'my_custom_endpoints' );
 function my_custom_query_vars( $vars ) {
 	$vars[] = 'billing-method-info';
 
