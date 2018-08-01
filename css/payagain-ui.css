@@ -36,7 +36,7 @@
 }
 #iamport-nicepay-card-holder .checkout-input-row1 .col p,
 #iamport-nicepay-card-holder .checkout-input-row2 .col p {
-  width: 95%;
+  /* width: 95%; */
 }
 
 .woocommerce #place_order {
