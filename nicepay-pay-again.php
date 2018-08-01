@@ -91,12 +91,21 @@ class WC_Gateway_Pay_Again extends WC_Payment_Gateway {
 				<label for="' . esc_attr( $id ) . '-card-pwd">' . '카드비밀번호 앞2자리' . ' <span class="required">*</span></label>
 				<input id="' . esc_attr( $id ) . '-card-pwd" class="input-text wc-credit-card-form-card-pwd" type="password" autocomplete="off" placeholder="' . esc_attr__( '카드비밀번호 앞2자리', 'iamport-for-woocommerce' ) . '" name="' . ( $args['fields_have_names'] ? $this->id . '-card-pwd' : '' ) . '" maxlength="2"/>
 				</p></div></div>',
-				'add-card-button' => '<button class="button">최초 결제</button>'
 			);
+			add_filter( 'woocommerce_order_button_html', 'initial_order_button_html');
+			function initial_order_button_html( $button ) {
+					$button = '<button class="button">최초 결제</button>';
+					return $button;
+			}
 		} else {
 			$iamoprt_fields = array(
-				'info-field' => '<p>입력하셨던 카드 정보로 결제가 이루어집니다.</p><button class="button">결제</button>',
+				'info-field' => '<p>입력하셨던 카드 정보로 결제가 이루어집니다.</p>',
 			);
+			add_filter( 'woocommerce_order_button_html', 'pay_again_order_button_html');
+			function pay_again_order_button_html( $button ) {
+					$button = '<button class="button">결제</button>';
+					return $button;
+			}
 		}
 		return $iamoprt_fields;
 	}
